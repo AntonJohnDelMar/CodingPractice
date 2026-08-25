@@ -37,7 +37,7 @@ ListNode* LinkedList::generate_list(std::vector<int> values) {
 }; 
 
 
-ListNode* LinkedList::reverse_list(ListNode* head) {
+ListNode* LinkedList::reverse_list(ListNode* head) { 
     if (head == nullptr) return nullptr; 
 
     /*
@@ -61,22 +61,6 @@ ListNode* LinkedList::reverse_list(ListNode* head) {
     head->next = prev_node; 
     return head; 
 }; 
-
-/*
-    ListNode* node_5 = new ListNode(5); 
-    ListNode* node_4 = new ListNode(4, node_5);  
-    ListNode* node_3 = new ListNode(3, node_4); 
-    ListNode* node_2 = new ListNode(2, node_3); 
-    ListNode* node_1 = new ListNode(1, node_2); 
-
-    auto alg = LinkedList(node_1); 
-
-    alg.reverse_list(node_1); 
-
-    alg.head = node_5; 
-
-    alg.delete_list(); 
-*/
 
 
 bool LinkedList::has_cycle(ListNode *head) {

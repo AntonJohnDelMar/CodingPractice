@@ -28,15 +28,16 @@ class Tree {
         // O(V), recursively swap left and right children 
         TreeNode* invert_tree(TreeNode* root); 
 
-        // 
+        // O(V), We add the children of all nodes in the current layer using a queue 
         std::vector<std::vector<int>> level_order(TreeNode* root); 
 
-        // 
+        // O(V * v) = O(V^2), recursive approach, check if current tree is same as subtree, if not check if left or right are same as subtree, for each node in our tree check if it is a subtree, this is doubly recursive 
         bool is_subtree(TreeNode* root, TreeNode* subRoot); 
 
 }; 
 
 /*
+Blind 75 List 
 Completed: 
 - (Easy) Maximum Depth of Binary Tree 
 - (Easy) Same Tree

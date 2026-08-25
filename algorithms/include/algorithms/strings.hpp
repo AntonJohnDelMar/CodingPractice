@@ -18,24 +18,25 @@ class String {
         // O(n), better to use two pointer, if pointers ever differ then not a palindrome, we do not count non alphanumeric chars so skip those, we also don't count capitols as different 
         bool check_palindrome(const std::string string); 
 
-        // O(n + k), k is backtrack, use set to track unique chars, once we see a dup char we delete chars until we hit the original dup, keep track of the longest length as we go 
+        // O(n + k) = O(n), k is backtrack, use set to track unique chars, once we see a dup char we delete chars until we hit the original dup, keep track of the longest length as we go 
         int length_of_longest_substring(std::string s); 
 
-        // O(26n), sliding window technique, a valid window is one where the length - most frequent char is <= k, if invalid move the left pointer, 
+        // O(26n) = O(n), sliding window technique, a valid window is one where the length - most frequent char is <= k, if invalid move the left pointer, 
         int character_replacement(std::string s, int k); 
 
         // O(n + k) = O(n), create map of char and their frequency, if two maps are the same it is anagram 
-        // O(nlogn + klogn), check if two sorted strings are same 
+        // O(nlogn + klogn) = O(nlogn), check if two sorted strings are same 
         bool is_anagram(std::string s, std::string t); 
 
         // O(m * n) use an array to count frequencies of char using ASCII values, then we can use the frequency "map" as they key for fast lookup 
         std::vector<std::vector<std::string>> group_anagrams(std::vector<std::string> &strs); 
 
-        //
+        // O(n), use stack, just check for matching close and end or new open, if that fails the parentheses is invalid 
         bool valid_parentheses(std::string &s); 
 }; 
 
 /*
+Blind 75 List 
 Completed: 
 - (Medium) Longest Substring Without Repeating Characters
 - (Medium) Longest Repeating Character Replacement

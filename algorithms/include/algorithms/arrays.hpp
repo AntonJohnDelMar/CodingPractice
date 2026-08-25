@@ -19,7 +19,8 @@ class Array {
         // O(n), iterate once, keep track of longest sequence, iterate list length n 
         int find_max_consecutive_ones(std::vector<int> &nums); 
 
-        // O(n), Use set to find duplicate, iterate through and check which number is missing from set, n + n operations 
+        // O(2n) = O(n), Use set to find duplicate, iterate through and check which number is missing from set, n + n operations 
+        // O(n), iterate through vector, keep track of natural sum to n as well as sum of vector and track duplicate, in the end we know we can subtract the duplicate and the missing number will add to that to match the natural sum of n 
         std::vector<int> find_error_nums(std::vector<int> &nums); 
 
         // O(n), Iterate once, as we find largest value, assign second largest, iterate list of length n, 
@@ -29,13 +30,13 @@ class Array {
         // O(n), Use set to save seen values, check if target - current exists already, iterate through 
         std::tuple<int, int> two_sum(const int target, std::vector<int> &nums); 
 
-        // O(n), iterate through keep track of largest profit, save smallest and check profit, if we find smaller restart 
+        // O(n) iterate through keep track of largest profit, save smallest and check profit, if we find smaller restart 
         int max_profit(std::vector<int> &prices); 
 
         // O(n), iterate through and use separate unordered set to track duplicates, unordred saves time! 
         bool contains_duplicate(std::vector<int> &nums); 
 
-        // O(n), find prefix and postfix products, then multiply the prefix and post fix for each element 
+        // O(2n) = O(n), find prefix and postfix products, then multiply the prefix and post fix for each element 
         std::vector<int> product_except_self(std::vector<int> &nums); 
 
         // O(n), sliding window, move left pointer if the current sum is negative and start over again from the right, 
@@ -46,6 +47,7 @@ class Array {
 }; 
 
 /*
+Blind 75 List 
 Completed: 
 - (Easy) Two Sum 
 - (Easy) Best Time to Buy and Sell Stock 

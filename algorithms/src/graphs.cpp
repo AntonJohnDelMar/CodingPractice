@@ -62,7 +62,7 @@ C -- D -- |
 */
 
 bool Graph::can_finish(int num_courses, std::vector<std::vector<int>>& prerequisites) { 
-    /*
+    /* 
     Approaches: 
     - O(n + cycle), save pairs into a map, if our prereq is in the map follow it until we find a cycle or not 
     - ^ It is not mentioned in the problem description, but one class can have multiple prereqs, so this doesn't work 

@@ -39,12 +39,13 @@ class Graph {
         Node* clone_graph(Node* node); 
         Node* check_node_created(std::map<int, Node*> &created_nodes, Node* og_node); 
 
-        // 
+        // O(n + V) Create adjacency list using map and vectors, use DFS to traverse graph and check cycles, recursive 
         bool contains_cycle_DFS(int &current_class, std::unordered_map<int, std::vector<int>> &class_requirements, std::unordered_set<int> &visited, std::unordered_set<int> &class_path); 
         bool can_finish(int numCourses, std::vector<std::vector<int>>& prerequisites); 
 }; 
 
 /*
+Blind 75 List 
 Completed: 
 - (Medium) Clone Graph 
 - (Medium) Course Schedule 

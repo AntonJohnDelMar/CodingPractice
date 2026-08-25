@@ -98,7 +98,8 @@ std::vector<int> Array::find_error_nums(std::vector<int> &nums) {
 int Array::second_largest(std::vector<int> &nums) {
     /*
     naive approach - iterate twice, find largest value, then iterate again for the second largest 
-    - O(n^2) complexity, terrible scalablity, 
+    - O(2n) complexity, terrible scalablity, 
+    - O(n), Iterate once, as we find largest value, assign second largest, iterate list of length n, 
     */
     int largest = -1; 
     int second_largest = -1; 
@@ -195,7 +196,7 @@ int Array::max_profit(std::vector<int> &prices) {
 }; 
 
 
-bool Array::contains_duplicate(std::vector<int> &nums) {
+bool Array::contains_duplicate(std::vector<int> &nums) { 
     std::unordered_set<int> seen; 
 
     for (int i = 0; i < static_cast<int>(nums.size()); i++) { 
@@ -212,7 +213,7 @@ bool Array::contains_duplicate(std::vector<int> &nums) {
 
 std::vector<int> Array::product_except_self(std::vector<int> &nums) { 
     /*
-    O(n), return array where each element is product of the other elements except itself, no division! 
+    O(n + n) = O(2n), return array where each element is product of the other elements except itself, no division! 
     Find prefix and postfix products, then multiply the prefix and post fix for each element 
     [1, 2, 3, 4] = [24, 12, 8, 6] 
     */

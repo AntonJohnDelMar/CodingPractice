@@ -132,7 +132,7 @@ std::vector<std::vector<int>> Tree::level_order(TreeNode* root) {
 bool Tree::is_subtree(TreeNode* root, TreeNode* sub_root) { 
     /*
     Approaches: 
-    - recursive approach, check if current tree is same as subtree, if not check if left or right are same as subtree 
+    - O(V * v) recursive approach, check if current tree is same as subtree, if not check if left or right are same as subtree, for each node in the tree check if it is the subtree, this is like double recursive 
 
     */    
 
@@ -146,3 +146,4 @@ bool Tree::is_subtree(TreeNode* root, TreeNode* sub_root) {
 
     else return (is_subtree(root->left, sub_root) || is_subtree(root->right, sub_root)); 
 }; 
+

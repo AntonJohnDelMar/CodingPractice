@@ -18,10 +18,12 @@ class DynamicProgramming {
         // O(denom * coins), cache saves fewest # of denominations per coin value, for each coin value up to the target calculate the fewest coins needed by subtracting the denom and checking the fewest for that value 
         int coin_change(std::vector<int> &coins, int amount); 
 
+        // O(1/2 * n^2) = O(n^2), save the LIS for each number, when we reach a number iterate backwards adding the LIS of numbers smaller than itself if the sum is greater than it's current LIS 
         int length_of_LIS(std::vector<int> &nums); 
 }; 
 
 /*
+Blind 75 List 
 Completed: 
 - (Easy) Climbing Stairs 
 - (Medium) Coin Change 

@@ -198,10 +198,10 @@ std::vector<std::vector<std::string>> String::group_anagrams(std::vector<std::st
 }; 
 
 
-bool String::valid_parentheses(std::string &s) {
+bool String::valid_parentheses(std::string &s) { 
     /*
     Approaches: 
-    -  use a stack, when we see an open add it to the stack, pop from the stack the closed brackets, order is preserved naturally, 
+    - O(n), use a stack, when we see an open add it to the stack, pop from the stack the closed brackets, order is preserved naturally, 
 
     */
 
