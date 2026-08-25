@@ -1,0 +1,142 @@
+#include "algorithms/linked_lists.hpp"
+
+
+
+void LinkedList::delete_list(ListNode* head) { 
+    ListNode* temp = nullptr; 
+
+    // [1, 2, 3, 4, 5] 
+    while (head->next != nullptr) {
+        temp = head; 
+        head = head->next; 
+        delete temp; 
+    }
+
+    delete head; 
+}; 
+
+
+ListNode* LinkedList::generate_list(std::vector<int> values) { 
+    ListNode* current_node = nullptr; 
+    ListNode* root = current_node; 
+
+    for (auto &val : values) {
+        if (root == nullptr) {
+            current_node = new ListNode(val, nullptr); 
+            root = current_node; 
+        }
+
+        else {
+            ListNode* new_node = new ListNode(val, nullptr); 
+            current_node->next = new_node; 
+            current_node = current_node->next; 
+        }
+    }
+
+    return root; 
+}; 
+
+
+ListNode* LinkedList::reverse_list(ListNode* head) {
+    if (head == nullptr) return nullptr; 
+
+    /*
+    Approach: 
+    - O(2n), use stack, add nodes to the stack, connect nodes as we pop from the stack 
+    - O(n), use temp variable to save previous and next node 
+
+    [1, 2, 3, 4, 5] 
+    */
+
+    ListNode* prev_node = nullptr; 
+    ListNode* next_node = nullptr; 
+
+    while (head->next != nullptr) {
+        next_node = head->next; 
+        head->next = prev_node; 
+        prev_node = head; 
+        head = next_node; 
+    } 
+
+    head->next = prev_node; 
+    return head; 
+}; 
+
+/*
+    ListNode* node_5 = new ListNode(5); 
+    ListNode* node_4 = new ListNode(4, node_5);  
+    ListNode* node_3 = new ListNode(3, node_4); 
+    ListNode* node_2 = new ListNode(2, node_3); 
+    ListNode* node_1 = new ListNode(1, node_2); 
+
+    auto alg = LinkedList(node_1); 
+
+    alg.reverse_list(node_1); 
+
+    alg.head = node_5; 
+
+    alg.delete_list(); 
+*/
+
+
+bool LinkedList::has_cycle(ListNode *head) {
+    /*
+    Approaches: 
+    - O(n), iterate through the linked list, use a set to see if we have seen a node before 
+    - O(max_itr), if the while loop cycles past the max # of possible nodes there is a cycle, 
+    - slow fast pointer approach, the fast will catch the slow if cycle, fast goes next by two slow goes next by one 
+
+    */
+    if (head == nullptr) return false; 
+
+    int max_iterations = 1e4 + 1; 
+    int counter = 1; 
+    while (head->next != nullptr) { 
+        ++counter; 
+        if (counter >= max_iterations) return true; 
+        head = head->next; 
+    }
+
+    return false; 
+}; 
+
+
+ListNode* LinkedList::merge_two_lists(ListNode* list_1, ListNode* list_2) {
+    /*
+    Approaches: 
+    - if list_2 node is greater add list_1 node, switch once list_1 node is greater, go until we hit nullptr for both 
+
+    */
+
+    ListNode* root_node = nullptr; 
+    ListNode* current_node = nullptr; 
+
+    auto assign_and_move = [&](ListNode* &move_node) { 
+        if (current_node == nullptr) {
+            current_node = move_node;
+            root_node = current_node; 
+        }  
+
+        else {
+            current_node->next = move_node; 
+            current_node = current_node->next; 
+        } 
+
+        move_node = move_node->next; 
+    }; 
+
+    while (list_1 != nullptr || list_2 != nullptr) { 
+
+        if (list_1 == nullptr) assign_and_move(list_2); 
+
+        else if (list_2 == nullptr) assign_and_move(list_1); 
+
+        else {
+            if (list_1->val <= list_2->val) assign_and_move(list_1); 
+            else assign_and_move (list_2); 
+        } 
+
+    }
+
+    return root_node; 
+}; 
