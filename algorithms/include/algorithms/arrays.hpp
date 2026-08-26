@@ -44,6 +44,9 @@ class Array {
 
         // O(2n) = O(n), worst case we have to check every element twice, we use a window taking product of items, if we hit a zero shrink window keeping track of remaining product after dividing out terms, move past zero repeat, shrink again at the end 
         int max_product(std::vector<int> &nums); 
+
+        // 
+        int missing_multiple(std::vector<int>& nums, int k); 
 }; 
 
 /*

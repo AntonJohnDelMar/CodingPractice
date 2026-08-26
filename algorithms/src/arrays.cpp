@@ -320,3 +320,25 @@ int Array::max_product(std::vector<int> &nums) {
 
     return max_product; 
 }; 
+
+
+int missing_multiple(std::vector<int>& nums, int k) {
+    /*
+    Approaches: 
+    - O(n + mlogm) = O(mlogm), if modulo is 0 then it is a multiple, we can calculate multiple by dividing, save the multiples in a sorted vector then iterate and find the smallest missing one 
+
+    10, 6, 7, 9, 2, 3, 8, k = 2 
+    5, 3, n, n, 1, n, 4 
+    */ 
+
+    std::set<int> seen_multiples; 
+    for (auto &number : nums) { 
+        if (number % k == 0) seen_multiples.insert(number / k); 
+    }
+
+    for (int i = 0; i < seen_multiples.size(); i++) { 
+        if (!seen_multiples.contains(i + 1)) return k * (i + 1); 
+    } 
+
+    return k * (seen_multiples.size() + 1); // return nth + 1 multiple, i.e. we had 2, 4, 6, 8 so return 10 
+}; 
