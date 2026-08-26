@@ -130,3 +130,65 @@ int DynamicProgramming::length_of_LIS(std::vector<int> &nums) {
 
     return max_LIS; 
 }; 
+
+
+int DynamicProgramming::longest_common_subsequence(std::string text_1, std::string text_2) {
+    /*
+    Approaches: 
+    - save subsequences from both texts into separate sets, see if any of the subs in set 1 are in set 2, doesn't work if we can delete characters 
+    - save subs and their permutations then check if other text contains one of them, this would be very expensive, could help if we just look at the smaller text 
+    - Use 2D array, if two letters at i and j are equal, check all previous rows before i up until j and take max(ij, ij + 1), this soln takes too long ! 
+    - Use 2D array, carry over info from the previous row, if i and j are the same add one to the LCS from the previous row and carry that for the rest of the row 
+    - O(n * m), save the LCS for each position in text 1, compare the char in text 2, track the current length, if the current length < LCS at that index then make the curr len equal to that LCS, if the two char are the same LCS at that index = curr len + 1, 
+
+
+    text1 = "abcde", text2 = "afshe" 
+    text1 = "abcde", text2 = "ce" 
+    */
+
+    std::vector<int> LCS(text_1.size(), 0); 
+    int longest = 0; 
+
+    for (auto &_char : text_2) {
+        int current_length = 0; 
+        for (int i = 0; i < text_1.size(); i++) {
+            if (current_length < LCS[i]) current_length = LCS[i]; 
+            else if (_char == text_1[i]) {
+                LCS[i] = current_length + 1; 
+                longest = std::max(longest, current_length + 1); 
+            } 
+        }
+    }
+
+    return longest; 
+
+    /* 
+    // Third approach, took too long 
+    int LCS[text_1.size()][text_2.size()]; 
+
+    int max = 0; 
+    for (int i = 0; i < text_1.size(); i++) { 
+        for (int j = 0; j < text_2.size(); j++) { 
+
+            if (text_1[i] == text_2[j]) {
+                int find_max = 1; 
+
+                for (int i_search = 0; i_search < i; i_search++) { 
+                    for (int j_search = 0; j_search < j; j_search++) { 
+                        find_max = std::max(find_max, LCS[i_search][j_search] + 1); 
+                    }
+                }
+
+                LCS[i][j] = find_max; 
+                max = std::max(max, find_max); 
+
+                if (find_max == 2) continue; 
+            }
+
+            else LCS[i][j] = 0; 
+        }
+    }
+
+    return max; 
+    */
+}; 

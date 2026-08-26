@@ -13,12 +13,9 @@
 
 
 int main(int argv, char* argc[]) { 
-    auto alg = LinkedList(); 
+    auto algorithm = DynamicProgramming(); 
 
-    ListNode* list_1 = alg.generate_list({1, 2, 4}); 
-    ListNode* list_2 = alg.generate_list({1, 3, 4, 5}); 
-
-    ListNode* result = alg.merge_two_lists(list_1, list_2); 
+    auto result = algorithm.longest_common_subsequence("bsbininm", "jmjkbkjkv"); 
 
     return 0; 
 } 

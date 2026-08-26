@@ -18,8 +18,11 @@ class DynamicProgramming {
         // O(denom * coins), cache saves fewest # of denominations per coin value, for each coin value up to the target calculate the fewest coins needed by subtracting the denom and checking the fewest for that value 
         int coin_change(std::vector<int> &coins, int amount); 
 
-        // O(1/2 * n^2) = O(n^2), save the LIS for each number, when we reach a number iterate backwards adding the LIS of numbers smaller than itself if the sum is greater than it's current LIS 
+        // O(1/2 * n^2) = O(n^2), save the longest increasing subsequence (LIS) for each number, when we reach a number iterate backwards adding the LIS of numbers smaller than itself if the sum is greater than it's current LIS 
         int length_of_LIS(std::vector<int> &nums); 
+
+        // O(n * m), save the LCS for each position in text 1, compare the char in text 2, track the current length, if the current length < LCS at that index then make the curr len equal to that LCS, if the two char are the same LCS at that index = curr len + 1, 
+        int longest_common_subsequence(std::string text1, std::string text2); 
 }; 
 
 /*
@@ -27,9 +30,9 @@ Blind 75 List
 Completed: 
 - (Easy) Climbing Stairs 
 - (Medium) Coin Change 
+- (Medium) Longest Increasing Subsequence 
 
 TODO: 
-- Longest Increasing Subsequence
 - Longest Common Subsequence
 - Word Break Problem
 - Combination Sum
