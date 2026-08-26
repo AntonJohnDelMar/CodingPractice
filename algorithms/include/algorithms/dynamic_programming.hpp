@@ -31,9 +31,9 @@ Completed:
 - (Easy) Climbing Stairs 
 - (Medium) Coin Change 
 - (Medium) Longest Increasing Subsequence 
+- (Medium) Longest Common Subsequence 
 
 TODO: 
-- Longest Common Subsequence
 - Word Break Problem
 - Combination Sum
 - House Robber

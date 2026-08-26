@@ -218,3 +218,37 @@ bool String::valid_parentheses(std::string &s) {
 
     return parentheses.empty(); 
 }; 
+
+
+bool String::is_palindrome_number(int x) {
+    /*
+    Approaches: 
+    - O(n), convert to string and check palindrome  
+    */
+    std::string num_str = std::to_string(x); 
+
+    int right = 0; 
+    int left = num_str.size() - 1; 
+
+    while(right <= left) { 
+        if (num_str[right] != num_str[left]) return false; 
+        right++; 
+        left--; 
+    }
+
+    return true; 
+
+/*
+    // Math approach, reverse number, problem with overflow if x is too large though ? 
+    if (x < 0) return false; 
+
+    int in = x; 
+    int out = 0; 
+    while(in) {
+        out = (out * 10) + (x % 10); 
+        in /= 10; 
+    }
+
+    return (out == x); 
+*/
+}; 

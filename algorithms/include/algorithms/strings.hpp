@@ -33,6 +33,10 @@ class String {
 
         // O(n), use stack, just check for matching close and end or new open, if that fails the parentheses is invalid 
         bool valid_parentheses(std::string &s); 
+
+        // O(n), convert to string and validate palindrome with two pointer method, 
+        // reverse integer method, issues if x is too large and causes overflow when trying to represent 
+        bool is_palindrome_number(int x); 
 }; 
 
 /*
