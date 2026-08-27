@@ -20,17 +20,30 @@ std::vector<int> gen_rand_vector(const int min_value, const int max_value, const
     return nums; 
 }
 
-/* 
-int max_value = 100; 
-int min_value = 0; 
-int num_elements = 40; 
-auto nums = gen_rand_vector(min_value, max_value, num_elements); 
-*/ 
-
 
 void run_matrix_code() {
     Eigen::Matrix<float, 4, 4> matrix_A; 
     matrix_A.setZero(); 
    
     std::cout << matrix_A << std::endl; 
+}; 
+
+
+class SimulateSystem {
+    public: 
+        SimulateSystem(); 
+
+        SimulateSystem(Eigen::MatrixXd A, Eigen::MatrixXd B, Eigen::MatrixXd C, Eigen::MatrixXd x_0, Eigen::MatrixXd input_sequence); 
+
+        void run_simulation(); 
+
+    private: 
+        Eigen::MatrixXd A, B, C; 
+        Eigen::MatrixXd x_0; 
+        Eigen::MatrixXd input_sequence; 
+        Eigen::MatrixXd simulated_state_sequence; 
+        Eigen::MatrixXd simulated_output_sequence; 
+        Eigen::MatrixXd time; // Row vector 
+
+        int m, n, r, time_samples; // Matrix dimensions 
 }; 
