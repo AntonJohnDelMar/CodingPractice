@@ -9,6 +9,7 @@
 #include <unordered_set> 
 #include <array> 
 #include <cctype> 
+#include <sstream> 
 
 
 
@@ -37,6 +38,9 @@ class String {
         // O(n), convert to string and validate palindrome with two pointer method, 
         // reverse integer method, issues if x is too large and causes overflow when trying to represent 
         bool is_palindrome_number(int x); 
+
+        // O(n), iterate through string, count the length of words as we go along, do not count if it is a space and restart on the next word, 
+        int length_of_last_word(std::string s); 
 }; 
 
 /*

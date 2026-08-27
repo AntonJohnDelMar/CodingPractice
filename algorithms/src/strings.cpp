@@ -252,3 +252,36 @@ bool String::is_palindrome_number(int x) {
     return (out == x); 
 */
 }; 
+
+
+int String::length_of_last_word(std::string s) {
+    int length = 0; 
+
+    bool counting = false; 
+
+    for (auto &c : s) { 
+        if (c != ' ') { 
+            if (!counting) {
+                counting = true; 
+                length = 1; 
+            }
+            
+            else length++; 
+        }
+
+        else {
+            counting = false; 
+        }
+    } 
+
+    return length; 
+    /* 
+    std::stringstream sstream(s); 
+
+    std::string last_word = ""; 
+
+    while (sstream >> last_word); 
+
+    return last_word.length(); 
+    */
+}; 

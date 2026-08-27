@@ -132,7 +132,7 @@ ListNode* LinkedList::add_two_numbers(ListNode* list_1, ListNode* list_2) {
     - O(n + m + o), obtain int representation of both numbers by iterating, add them, then find linked list representation of the sum 
     - O(n), add two nodes at a time, track the carry by dividing by 10, get remainder with modulo 10 
 
-    */
+    */ 
 
     ListNode* current_number = nullptr; 
     ListNode* root = nullptr; 
