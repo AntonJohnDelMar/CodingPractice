@@ -29,6 +29,8 @@ class LinkedList {
 
         // O(n + m) = O(n), iterate through both lists, compare nodes and whichever is smaller link it to the merged list 
         ListNode* merge_two_lists(ListNode* list_1, ListNode* list_2); 
+
+        ListNode* add_two_numbers(ListNode* list_1, ListNode* list_2); 
 }; 
 
 /*

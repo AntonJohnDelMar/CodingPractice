@@ -13,9 +13,12 @@
 
 
 int main(int argv, char* argc[]) { 
-    auto algorithm = DynamicProgramming(); 
+    auto algorithm = LinkedList(); 
 
-    auto result = algorithm.longest_common_subsequence("bsbininm", "jmjkbkjkv"); 
+    ListNode* list_1 = algorithm.generate_list({9, 9}); 
+    ListNode* list_2 = algorithm.generate_list({2}); 
+
+    auto result = algorithm.add_two_numbers(list_2, list_1); 
 
     return 0; 
 } 

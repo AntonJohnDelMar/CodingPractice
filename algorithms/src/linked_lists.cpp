@@ -124,3 +124,43 @@ ListNode* LinkedList::merge_two_lists(ListNode* list_1, ListNode* list_2) {
 
     return root_node; 
 }; 
+
+
+ListNode* LinkedList::add_two_numbers(ListNode* list_1, ListNode* list_2) { 
+    /*
+    Approaches: 
+    - O(n + m + o), obtain int representation of both numbers by iterating, add them, then find linked list representation of the sum 
+    - O(n), add two nodes at a time, track the carry by dividing by 10, get remainder with modulo 10 
+
+    */
+
+    ListNode* current_number = nullptr; 
+    ListNode* root = nullptr; 
+
+    int carry = 0; 
+    while (list_1 != nullptr || list_2 != nullptr || carry != 0) { 
+        int val_1 = list_1 != nullptr ? list_1->val : 0; 
+        int val_2 = list_2 != nullptr ? list_2->val : 0; 
+
+        int sum = val_1 + val_2 + carry; 
+        int remainder = sum % 10; 
+        carry = sum / 10; 
+
+        ListNode* new_number = new ListNode(remainder, nullptr); 
+
+        if (current_number == nullptr) {
+            current_number = new_number; 
+            root = current_number; 
+        }
+
+        else {
+            current_number->next = new_number; 
+            current_number = current_number->next; 
+        }
+
+        list_1 = list_1 != nullptr ? list_1->next : list_1; 
+        list_2 = list_2 != nullptr ? list_2->next : list_2; 
+    }
+
+    return root; 
+}; 
