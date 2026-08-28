@@ -354,9 +354,7 @@ int Array::remove_duplicates(std::vector<int> &nums) {
  
     int current_unique = nums[0]; 
     int left = 0; 
-    for (int right = 0; right < nums.size(); right++) {
-        int right_number = nums[right]; 
-
+    for (auto &right_number : nums) { 
         if (right_number != current_unique) { 
             left++; 
             nums[left] = right_number; 
