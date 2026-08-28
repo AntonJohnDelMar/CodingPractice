@@ -424,3 +424,26 @@ int Array::search_insert(std::vector<int>& nums, int target) {
 
     return target > nums[left] ? left + 1 : left; 
 }; 
+
+
+std::vector<int> Array::plus_one(std::vector<int> &digits) { 
+    /*
+    Approach:  
+    - O(n), add one to final element, while there is a carry keep adding it to the elements until there is no carry then return digits, otherwise in the end we have to insert carry into the front of digits 
+
+    */
+    int curr_digit = -1; 
+    for (int i = digits.size() - 1; i >= 0; i--) {
+        curr_digit = digits[i]; 
+        curr_digit++; 
+
+        if (curr_digit / 10) digits[i] = 0; 
+        else {
+            digits[i] = curr_digit;
+            break; 
+        } 
+    }
+
+    if (curr_digit / 10) digits.insert(digits.begin(), 1); 
+    return digits; 
+}; 

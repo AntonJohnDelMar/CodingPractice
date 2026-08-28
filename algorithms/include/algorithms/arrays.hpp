@@ -55,8 +55,11 @@ class Array {
         // O(n), move right until we hit num == val set the left pointer here, from now on any time num != val set that val at left and move left up 
         int remove_element(std::vector<int>& nums, int val);  
 
-        // 
+        // O(logn), binary search, move window left if target is > or move right if < mid value, if we are at the smallest window size of two elements determine where the target val will be inserted 
         int search_insert(std::vector<int>& nums, int target); 
+
+        // 
+        std::vector<int> plus_one(std::vector<int> &digits); 
 }; 
 
 /*
