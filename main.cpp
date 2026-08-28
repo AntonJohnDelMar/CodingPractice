@@ -14,9 +14,9 @@
 
 int main(int argv, char* argc[]) { 
     auto algorithm = Array(); 
-    std::vector<int> nums {0, 0, 1, 1, 1, 2, 2, 3, 3, 4}; 
+    std::vector<int> nums {0, 1, 2, 2, 3, 0, 4, 2}; 
 
-    auto result = algorithm.remove_duplicates(nums); 
+    auto result = algorithm.remove_element(nums, 2); 
 
     return 0; 
 } 

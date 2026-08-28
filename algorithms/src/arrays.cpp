@@ -364,3 +364,32 @@ int Array::remove_duplicates(std::vector<int> &nums) {
 
     return left + 1; 
 }; 
+
+
+int Array::remove_element(std::vector<int>& nums, int val) { 
+    /*
+    Approaches: 
+    - move right until we hit num == val set the left pointer here, from now on any time num != val set that val at left and move left up 
+
+    [0, 1, 2, 2, 3, 0, 4, 2] = [0, 1, 3, 0, 4, -, -, -] 
+    */
+
+    int k = 0; 
+    int left = -1; 
+    for (int right = 0; right < nums.size(); right++) {
+        int right_val = nums[right]; 
+
+        if (right_val == val && left == -1) left = right; 
+
+        else if (right_val != val) { 
+            k++; 
+            if (left != -1) {
+                nums[left] = right_val; 
+                left++; 
+            }
+        }
+
+    }
+
+    return k; 
+}; 

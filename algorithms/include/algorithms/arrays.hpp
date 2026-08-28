@@ -5,7 +5,7 @@
 #include <set>
 #include <unordered_set> 
 #include <unordered_map> 
-
+#include <queue> 
 
 
 class Array {
@@ -45,11 +45,14 @@ class Array {
         // O(2n) = O(n), worst case we have to check every element twice, we use a window taking product of items, if we hit a zero shrink window keeping track of remaining product after dividing out terms, move past zero repeat, shrink again at the end 
         int max_product(std::vector<int> &nums); 
 
-        // 
+        // O(n + mlogm) = O(mlogm), if modulo is 0 then it is a multiple, we can calculate multiple by dividing, save the multiples in a sorted vector then iterate and find the smallest missing one 
         int missing_multiple(std::vector<int> &nums, int k); 
 
-        // 
+        // O(n), left and right pointer, when the right detects a new unique num move left one spot and place it, track the current unique num 
         int remove_duplicates(std::vector<int> &nums); 
+
+        // 
+        int remove_element(std::vector<int>& nums, int val);  
 }; 
 
 /*
