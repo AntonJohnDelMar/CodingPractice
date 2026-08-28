@@ -369,7 +369,7 @@ int Array::remove_duplicates(std::vector<int> &nums) {
 int Array::remove_element(std::vector<int>& nums, int val) { 
     /*
     Approaches: 
-    - move right until we hit num == val set the left pointer here, from now on any time num != val set that val at left and move left up 
+    - O(n), move right until we hit num == val set the left pointer here, from now on any time num != val set that val at left and move left up 
 
     [0, 1, 2, 2, 3, 0, 4, 2] = [0, 1, 3, 0, 4, -, -, -] 
     */
@@ -392,4 +392,35 @@ int Array::remove_element(std::vector<int>& nums, int val) {
     }
 
     return k; 
+}; 
+
+
+int Array::search_insert(std::vector<int>& nums, int target) {
+    /*
+    Approaches: 
+    - O(logn), binary search, move window left if target is > or move right if < mid value, if we are at the smallest window size of two elements determine where the target val will be inserted 
+
+    [1, 2, 3, 4, 5, 7] 
+    [0, 2, 3, 4, 5, 7]
+    [1, 3, 5, 6] 
+    */
+
+    int left = 0; 
+    int right = nums.size() - 1;  
+    int mid = -1; 
+
+    while (left != right) { 
+        mid = (left + right) / 2; 
+
+        if (left == mid) target > nums[mid] ? left = right : right = left; 
+
+        else if (target > nums[mid]) left = mid; 
+
+        else if (target < nums[mid]) right = mid; 
+
+        else return mid; 
+
+    }
+
+    return target > nums[left] ? left + 1 : left; 
 }; 

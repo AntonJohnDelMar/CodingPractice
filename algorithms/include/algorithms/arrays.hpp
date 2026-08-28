@@ -6,6 +6,7 @@
 #include <unordered_set> 
 #include <unordered_map> 
 #include <queue> 
+#include <cmath> 
 
 
 class Array {
@@ -51,8 +52,11 @@ class Array {
         // O(n), left and right pointer, when the right detects a new unique num move left one spot and place it, track the current unique num 
         int remove_duplicates(std::vector<int> &nums); 
 
-        // 
+        // O(n), move right until we hit num == val set the left pointer here, from now on any time num != val set that val at left and move left up 
         int remove_element(std::vector<int>& nums, int val);  
+
+        // 
+        int search_insert(std::vector<int>& nums, int target); 
 }; 
 
 /*

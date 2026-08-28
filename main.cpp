@@ -14,9 +14,9 @@
 
 int main(int argv, char* argc[]) { 
     auto algorithm = Array(); 
-    std::vector<int> nums {0, 1, 2, 2, 3, 0, 4, 2}; 
+    std::vector<int> nums {1, 3, 5, 7, 9, 11}; 
 
-    auto result = algorithm.remove_element(nums, 2); 
+    auto result = algorithm.search_insert(nums, 12); 
 
     return 0; 
 } 
