@@ -285,3 +285,33 @@ int String::length_of_last_word(std::string s) {
     return last_word.length(); 
     */
 }; 
+
+
+std::string String::longest_common_prefix(std::vector<std::string>& strs) { 
+    /*
+    Approaches: 
+    - O(n * m), go by index and check if each str has the same char at the current idx, worst case n is len of lcp and m is number of strs 
+    */
+
+    std::string lcp = ""; 
+
+    int max_str_len = 200; 
+    for (int i = 0; i < max_str_len; i++) { 
+
+        char common_char = strs[0][i]; 
+        bool is_common = true; 
+        for (auto &str : strs) {
+            char curr_char = str[i]; 
+
+            if (curr_char != common_char || curr_char == '\0') { 
+                is_common = false; 
+                break; 
+            }
+        }
+
+        if (is_common) lcp += common_char; 
+        else break; 
+    }
+
+    return lcp; 
+}; 

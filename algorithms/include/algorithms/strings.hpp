@@ -41,6 +41,9 @@ class String {
 
         // O(n), iterate through string, count the length of words as we go along, do not count if it is a space and restart on the next word, 
         int length_of_last_word(std::string s); 
+
+        // O(n * m), go by index and check if each str has the same char at the current idx, worst case n is len of lcp and m is number of strs 
+        std::string longest_common_prefix(std::vector<std::string>& strs); 
 }; 
 
 /*
