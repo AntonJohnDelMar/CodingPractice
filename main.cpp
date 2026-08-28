@@ -13,12 +13,10 @@
 
 
 int main(int argv, char* argc[]) { 
-    auto algorithm = LinkedList(); 
+    auto algorithm = Array(); 
+    std::vector<int> nums {0, 0, 1, 1, 1, 2, 2, 3, 3, 4}; 
 
-    ListNode* list_1 = algorithm.generate_list({9, 9}); 
-    ListNode* list_2 = algorithm.generate_list({2}); 
-
-    auto result = algorithm.add_two_numbers(list_2, list_1); 
+    auto result = algorithm.remove_duplicates(nums); 
 
     return 0; 
 } 

@@ -46,7 +46,10 @@ class Array {
         int max_product(std::vector<int> &nums); 
 
         // 
-        int missing_multiple(std::vector<int>& nums, int k); 
+        int missing_multiple(std::vector<int> &nums, int k); 
+
+        // 
+        int remove_duplicates(std::vector<int> &nums); 
 }; 
 
 /*

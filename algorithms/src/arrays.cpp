@@ -322,7 +322,7 @@ int Array::max_product(std::vector<int> &nums) {
 }; 
 
 
-int missing_multiple(std::vector<int>& nums, int k) {
+int Array::missing_multiple(std::vector<int>& nums, int k) { 
     /*
     Approaches: 
     - O(n + mlogm) = O(mlogm), if modulo is 0 then it is a multiple, we can calculate multiple by dividing, save the multiples in a sorted vector then iterate and find the smallest missing one 
@@ -341,4 +341,28 @@ int missing_multiple(std::vector<int>& nums, int k) {
     } 
 
     return k * (seen_multiples.size() + 1); // return nth + 1 multiple, i.e. we had 2, 4, 6, 8 so return 10 
+}; 
+
+
+int Array::remove_duplicates(std::vector<int> &nums) {
+    /*
+    Approaches: 
+    - O(n), left and right pointer, when the right detects a new unique num move left one spot and place it, track the current unique num 
+
+    [0, 0, 1, 1, 1, 2, 2, 3, 3, 4] = [0, 1, 2, 3, 4, -, -, -, -, -] 
+    */
+ 
+    int current_unique = nums[0]; 
+    int left = 0; 
+    for (int right = 0; right < nums.size(); right++) {
+        int right_number = nums[right]; 
+
+        if (right_number != current_unique) { 
+            left++; 
+            nums[left] = right_number; 
+            current_unique = right_number; 
+        } 
+    }
+
+    return left + 1; 
 }; 
