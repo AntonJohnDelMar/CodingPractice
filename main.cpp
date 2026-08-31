@@ -15,7 +15,7 @@
 int main(int argv, char* argc[]) { 
     auto algorithm = String(); 
 
-    auto result = algorithm.roman_to_int("MCMXCIV"); 
+    auto result = algorithm.needle_in_haystack("aaaxaaaa", "aaaa"); 
 
     return 0; 
 } 

@@ -45,11 +45,14 @@ class String {
         // O(n * m), go by index and check if each str has the same char at the current idx, worst case n is len of lcp and m is number of strs 
         std::string longest_common_prefix(std::vector<std::string>& strs); 
 
-        //
+        // O(n), use a map to store character to value, itr through string and add symbol values, check for the six subtraction cases by looking at the next symbol if necessary 
         int roman_to_int(std::string s); 
+
+        // 
+        int needle_in_haystack(std::string haystack, std::string needle); 
 }; 
 
-/*
+/* 
 Blind 75 List 
 Completed: 
 - (Medium) Longest Substring Without Repeating Characters

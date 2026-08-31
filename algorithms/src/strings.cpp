@@ -317,7 +317,7 @@ std::string String::longest_common_prefix(std::vector<std::string>& strs) {
 }; 
 
 
-int String::roman_to_int(std::string s) {
+int String::roman_to_int(std::string s) { 
     /*
     Approaches: 
     - O(n), use a map to store character to value, itr through string and add symbol values, check for the six subtraction cases by looking at the next symbol if necessary 
@@ -368,4 +368,63 @@ int String::roman_to_int(std::string s) {
                 break; 
         }
     */
+}; 
+
+
+int String::needle_in_haystack(std::string haystack, std::string needle) { 
+    /*
+    Approaches: 
+    -  O(n), itr through haystack, when a char matches needle continue itr and check if the following letters match needle, breaks in the case there is overlap like in "mississippi" "issip" 
+    - O(n * m), naive solution, for each char of haystack check if it the following substring matches needle 
+    - O(n + m), KMP algorithm 
+    
+    haystack = "leelleetcode", needle = "leet" 
+
+    "mississippi" "issip" 
+    "mississippi" "issipi" 
+    */
+    if (haystack.size() < needle.size()) return -1; 
+    if (needle == "") return 0; 
+
+    auto generate_LPS = [&]() {
+        std::vector<int> LPS(needle.size()); 
+        
+        LPS[0] = 0; 
+        int prev_LPS = 0; int i = 1; 
+        
+        while (i < needle.size()) {
+            if (needle[i] == needle[prev_LPS]) {
+                LPS[i] = prev_LPS + 1; 
+                i++; 
+                prev_LPS++; 
+            }
+
+            else if (prev_LPS == 0) {
+                LPS[i] = 0; 
+                i++; 
+            }
+
+            else prev_LPS = LPS[prev_LPS - 1]; 
+        }
+
+        return LPS; 
+    }; 
+
+    auto LPS = generate_LPS(); 
+
+    int i = 0; int j = 0; 
+    while (i < haystack.size()) {
+        if (haystack[i] == needle[j]) { 
+            i++; j++; 
+        }
+
+        else {
+            if (j == 0) i++; 
+            else j = LPS[j - 1]; 
+        }
+
+        if (j == needle.size()) return i - needle.size(); 
+    }
+
+    return -1; 
 }; 
