@@ -164,3 +164,47 @@ ListNode* LinkedList::add_two_numbers(ListNode* list_1, ListNode* list_2) {
 
     return root; 
 }; 
+
+
+std::vector<int> LinkedList::nodes_between_critical_points(ListNode* head) {
+    /* 
+    Approaches: 
+    - use a window as we iterate through the list, in this case the window is achieved by saving our previous value and just comparing our node val next node val and prev node val, as we move the window we keep track of the index of the middle element, with another list we track critical points 
+    - O(n), track prev val to compare prev current and next val for crit point, save idx of first crit point for later, as we add crit points check dist between prev and current crit point for min distance, in the end check first and last crit point for max distance 
+
+    [5, 3, 1, 2, 5, 1, 2] 
+
+    [1, 3, 2, 4] 
+    */
+
+    int first_idx = -1; 
+    int prev_idx = -1; 
+    int idx = 0; 
+
+    int min_distance = 1e6; 
+
+    int prev_value = -1; 
+    while (head->next != nullptr) { 
+        int current_value = head->val; 
+        int next_value = head->next->val; 
+
+        bool is_min = (current_value < prev_value && current_value < next_value); 
+        bool is_max = (current_value > prev_value && current_value > next_value); 
+        if ((is_min || is_max) && prev_value != -1) { 
+            if (prev_idx != -1) min_distance = std::min(min_distance, idx - prev_idx);
+            else first_idx = idx; 
+
+            prev_idx = idx; 
+        }
+
+        prev_value = current_value; 
+        idx++; 
+        head = head->next; 
+    } 
+
+    if (prev_idx == first_idx) return {-1, -1}; 
+    else {
+        int max_distance = prev_idx - first_idx; 
+        return {min_distance, max_distance}; 
+    } 
+}; 

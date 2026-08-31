@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <unordered_set> 
 #include <vector> 
+#include <queue> 
 
 
 
@@ -30,7 +31,11 @@ class LinkedList {
         // O(n + m) = O(n), iterate through both lists, compare nodes and whichever is smaller link it to the merged list 
         ListNode* merge_two_lists(ListNode* list_1, ListNode* list_2); 
 
+        // O(n), add two nodes at a time, track the carry by dividing by 10, get remainder with modulo 10 
         ListNode* add_two_numbers(ListNode* list_1, ListNode* list_2); 
+
+        // 
+        std::vector<int> nodes_between_critical_points(ListNode* head); 
 }; 
 
 /*
