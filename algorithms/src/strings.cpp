@@ -315,3 +315,57 @@ std::string String::longest_common_prefix(std::vector<std::string>& strs) {
 
     return lcp; 
 }; 
+
+
+int String::roman_to_int(std::string s) {
+    /*
+    Approaches: 
+    - O(n), use a map to store character to value, itr through string and add symbol values, check for the six subtraction cases by looking at the next symbol if necessary 
+    - O(n), use switch statement, add symbol values to total, check special subtraction cases, uses less space than map method 
+
+    */
+
+    std::unordered_map<char, int> symbol_value { {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000} }; 
+
+    int roman_numeral = 0; 
+    for (int i = 0; i < s.size() - 1; i++) { 
+        if (symbol_value[s[i]] < symbol_value[s[i + 1]]) roman_numeral -= symbol_value[s[i]]; 
+        else roman_numeral += symbol_value[s[i]]; 
+    }
+
+    return roman_numeral + symbol_value[s[s.size() - 1]]; 
+    /* 
+        switch (current_char) {
+            case ('I'): 
+                if (i + 1 < s.size() && (s[i + 1] == 'V' || s[i + 1] == 'X')) roman_numeral -= 1; 
+                else roman_numeral += 1; 
+                break; 
+
+            case('V'): 
+                roman_numeral += 5; 
+                break; 
+
+            case('X'): 
+                if (i + 1 < s.size() && (s[i + 1] == 'L' || s[i + 1] == 'C')) roman_numeral -= 10; 
+                else roman_numeral += 10; 
+                break; 
+
+            case('L'): 
+                roman_numeral += 50; 
+                break; 
+
+            case('C'): 
+                if (i + 1 < s.size() && (s[i + 1] == 'D' || s[i + 1] == 'M')) roman_numeral -= 100; 
+                else roman_numeral += 100; 
+                break; 
+           
+            case('D'): 
+                roman_numeral += 500; 
+                break; 
+
+            case('M'): 
+                roman_numeral += 1000; 
+                break; 
+        }
+    */
+}; 

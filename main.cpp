@@ -13,11 +13,9 @@
 
 
 int main(int argv, char* argc[]) { 
-    auto algorithm = LinkedList(); 
+    auto algorithm = String(); 
 
-    auto head = algorithm.generate_list({5,3,1,2,5,1,2}); 
-
-    auto result = algorithm.nodes_between_critical_points(head); 
+    auto result = algorithm.roman_to_int("MCMXCIV"); 
 
     return 0; 
 } 

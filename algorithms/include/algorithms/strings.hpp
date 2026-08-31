@@ -44,6 +44,9 @@ class String {
 
         // O(n * m), go by index and check if each str has the same char at the current idx, worst case n is len of lcp and m is number of strs 
         std::string longest_common_prefix(std::vector<std::string>& strs); 
+
+        //
+        int roman_to_int(std::string s); 
 }; 
 
 /*
