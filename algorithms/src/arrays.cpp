@@ -447,3 +447,44 @@ std::vector<int> Array::plus_one(std::vector<int> &digits) {
     if (curr_digit / 10) digits.insert(digits.begin(), 1); 
     return digits; 
 }; 
+
+
+void Array::merge(std::vector<int> &nums_1, int m, std::vector<int> &nums_2, int n) { 
+    /*
+    Approaches: 
+    - compare element by element, if a val needs to be inserted into nums_1 then shift all the values to the left 
+    - O(2 * (n + m)), compare element by element, save values into a separate list, write values back into nums_1, 
+   
+    [1, 3, 5, 0, 0, 0], [2, 4, 6] 
+    [1, 3, 5, 0, 0, 0] 
+    */
+
+    int nums_1_ptr = 0; 
+    int nums_2_ptr = 0; 
+    std::vector<int> result; 
+    while (nums_1_ptr != m || nums_2_ptr != n) {
+        if (nums_1_ptr == m) {
+            result.push_back(nums_2[nums_2_ptr]); 
+            nums_2_ptr++; 
+        }
+
+        else if (nums_2_ptr == n) { 
+            result.push_back(nums_1[nums_1_ptr]); 
+            nums_1_ptr++;  
+        }
+
+        else if (nums_1[nums_1_ptr] <= nums_2[nums_2_ptr]) { 
+            result.push_back(nums_1[nums_1_ptr]); 
+            nums_1_ptr++;  
+        } 
+
+        else {
+            result.push_back(nums_2[nums_2_ptr]); 
+            nums_2_ptr++; 
+        }
+    }
+
+    for (int i = 0; i < m + n; i++) {
+        nums_1[i] = result[i]; 
+    }
+}; 

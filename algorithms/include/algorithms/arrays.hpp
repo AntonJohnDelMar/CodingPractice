@@ -58,8 +58,11 @@ class Array {
         // O(logn), binary search, move window left if target is > or move right if < mid value, if we are at the smallest window size of two elements determine where the target val will be inserted 
         int search_insert(std::vector<int>& nums, int target); 
 
-        // 
+        // O(n), add one to final element, while there is a carry keep adding it to the elements until there is no carry then return digits, otherwise in the end we have to insert carry into the front of digits 
         std::vector<int> plus_one(std::vector<int> &digits); 
+
+        // 
+        void merge(std::vector<int> &nums_1, int m, std::vector<int> &nums_2, int n);  
 }; 
 
 /*
