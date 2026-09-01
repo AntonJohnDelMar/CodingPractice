@@ -48,8 +48,11 @@ class String {
         // O(n), use a map to store character to value, itr through string and add symbol values, check for the six subtraction cases by looking at the next symbol if necessary 
         int roman_to_int(std::string s); 
 
-        // 
+        // O(n + m), KMP algorithm 
         int needle_in_haystack(std::string haystack, std::string needle); 
+
+        // 
+        std::string add_binary(std::string a, std::string b); 
 }; 
 
 /* 

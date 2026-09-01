@@ -428,3 +428,34 @@ int String::needle_in_haystack(std::string haystack, std::string needle) {
 
     return -1; 
 }; 
+
+
+std::string String::add_binary(std::string a, std::string b) {
+    /*
+    Approaches: 
+    - O(n + m), just do binary addition tracking carries, save output into deque to push front, convert deque to string in the end 
+
+    */
+    std::string result = ""; 
+
+    int carry = 0; 
+    int a_idx = a.size() - 1; 
+    int b_idx = b.size() - 1; 
+    while(a_idx >= 0 || b_idx >= 0) {
+        int a_bit = a_idx >= 0 ? a[a_idx] - '0' : 0; 
+        int b_bit = b_idx >= 0 ? b[b_idx] - '0' : 0; 
+        int sum = a_bit + b_bit + carry; 
+ 
+        carry = sum / 2; 
+        sum = sum % 2; 
+
+        result += std::to_string(sum); 
+
+        a_idx--; b_idx--; 
+    }
+
+    if (carry) result += std::to_string(carry); 
+
+    std::reverse(result.begin(), result.end()); 
+    return result; 
+}; 

@@ -15,7 +15,7 @@
 int main(int argv, char* argc[]) { 
     auto algorithm = String(); 
 
-    auto result = algorithm.needle_in_haystack("aaaxaaaa", "aaaa"); 
+    auto result = algorithm.add_binary("1010", "1011"); 
 
     return 0; 
 } 
