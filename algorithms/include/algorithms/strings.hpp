@@ -9,6 +9,7 @@
 #include <unordered_set> 
 #include <array> 
 #include <cctype> 
+#include <cmath> 
 #include <sstream> 
 
 
@@ -56,6 +57,9 @@ class String {
 
         // O(n), XOR each element, the element that remains is the single, this is because A^A = 0 whereas A^B^A = B, 
         int single_number(std::vector<int> &nums); 
+
+        //  O(n), each position in the title is column * 26^n
+        int title_to_number(std::string column_title); 
 }; 
 
 /* 

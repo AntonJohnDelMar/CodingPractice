@@ -461,11 +461,11 @@ std::string String::add_binary(std::string a, std::string b) {
 }; 
 
 
-int String::single_number(std::vector<int> &nums) { 
+int String::single_number(std::vector<int> &nums) {
     /*
     Approaches:  
     - O(n), use unordered set, when we see an element for the first time add it and the next time it is seen remove it, uses O(n) space
-    - O(n), XOR each element, the element that remains is the single, this is because A^A = 0 whereas A^B^A = B, 
+    - O(n), XOR each element, the element that remains is the single, this is because A^A = 0 whereas A^B^A = B, uses O(1) space, 
 
     */
 
@@ -473,4 +473,22 @@ int String::single_number(std::vector<int> &nums) {
     for (auto &num : nums) result ^= num; 
 
     return result; 
+}; 
+
+
+int String::title_to_number(std::string column_title) { 
+    /* 
+    Approaches: 
+    - O(n), each position in the title is column * 26^n
+
+    BZA is 2 * 26^2 + 26 * 26^1 + 1 * 26^0 
+    */
+
+    int column_number = 0; 
+
+    for (auto &column : column_title) { 
+        column_number = 26 * column_number + (column - 'A' + 1); 
+    }
+
+    return column_number; 
 }; 
