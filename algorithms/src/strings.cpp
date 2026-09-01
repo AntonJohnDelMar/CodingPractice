@@ -433,7 +433,7 @@ int String::needle_in_haystack(std::string haystack, std::string needle) {
 std::string String::add_binary(std::string a, std::string b) {
     /*
     Approaches: 
-    - O(n + m), just do binary addition tracking carries, save output into deque to push front, convert deque to string in the end 
+    - O(n), just do binary addition tracking carries, save output into deque to push front, convert deque to string in the end 
 
     */
     std::string result = ""; 
@@ -457,5 +457,20 @@ std::string String::add_binary(std::string a, std::string b) {
     if (carry) result += std::to_string(carry); 
 
     std::reverse(result.begin(), result.end()); 
+    return result; 
+}; 
+
+
+int String::single_number(std::vector<int> &nums) { 
+    /*
+    Approaches:  
+    - O(n), use unordered set, when we see an element for the first time add it and the next time it is seen remove it, uses O(n) space
+    - O(n), XOR each element, the element that remains is the single, this is because A^A = 0 whereas A^B^A = B, 
+
+    */
+
+    int result = 0; 
+    for (auto &num : nums) result ^= num; 
+
     return result; 
 }; 

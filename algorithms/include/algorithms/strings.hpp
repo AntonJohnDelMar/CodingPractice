@@ -51,8 +51,11 @@ class String {
         // O(n + m), KMP algorithm 
         int needle_in_haystack(std::string haystack, std::string needle); 
 
-        // 
+        // O(n), just do binary addition tracking carries, save output into deque to push front, convert deque to string in the end 
         std::string add_binary(std::string a, std::string b); 
+
+        // O(n), XOR each element, the element that remains is the single, this is because A^A = 0 whereas A^B^A = B, 
+        int single_number(std::vector<int> &nums); 
 }; 
 
 /* 
