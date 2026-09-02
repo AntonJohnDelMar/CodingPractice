@@ -60,6 +60,9 @@ class String {
 
         //  O(n), each position in the title is column * 26^n
         int title_to_number(std::string column_title); 
+
+        // O(total divisions + 1), we must convert from base 10 to base 26, handle remainder 0 case, ex. take 104 in base 26 it is [4, 0] = D? here we can't represent 0 with a letter so we subtract one and add 26 to the smaller tier giving [3, 26] = CZ 
+        std::string convert_to_title(int column_number); 
 }; 
 
 /* 

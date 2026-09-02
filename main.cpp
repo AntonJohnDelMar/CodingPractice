@@ -15,7 +15,7 @@
 int main(int argv, char* argc[]) { 
     auto algorithm = String(); 
 
-    auto result = algorithm.add_binary("1010", "1011"); 
+    auto result = algorithm.convert_to_title(1352); 
 
     return 0; 
 } 

@@ -492,3 +492,43 @@ int String::title_to_number(std::string column_title) {
 
     return column_number; 
 }; 
+
+
+std::string String::convert_to_title(int column_number) {
+    /*
+    Approaches: 
+    - O(total divisions + 1), we must convert from base 10 to base 26, handle remainder 0 case, ex. take 104 in base 26 it is [4, 0] = D? here we can't represent 0 with a letter so we subtract one and add 26 to the smaller tier giving [3, 26] = CZ 
+
+    */
+
+    std::deque<int> base_26; 
+
+    int carry = 0; 
+    while (column_number > 26) { 
+        int remainder = column_number % 26; 
+        column_number /= 26; 
+
+        if (remainder - carry == 0) { 
+            remainder = 0; 
+            carry = 0; 
+        }
+
+        if (remainder == 0) {
+            base_26.push_front(26 - carry); 
+            carry = 1; 
+        }
+
+        else { 
+            base_26.push_front(remainder - carry); 
+            carry = 0; 
+        }
+    } 
+    if (column_number - carry != 0) base_26.push_front(column_number - carry); 
+
+    std::string title = ""; 
+    for (auto &number : base_26) { 
+        title += number - 1 + 'A'; 
+    }
+
+    return title; 
+}; 
