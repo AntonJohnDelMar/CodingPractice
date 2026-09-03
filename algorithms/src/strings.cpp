@@ -532,3 +532,38 @@ std::string String::convert_to_title(int column_number) {
 
     return title; 
 }; 
+
+
+bool String::is_isomorphic(std::string s, std::string t) {
+    /*
+    Approaches: 
+    - O(n), map every char in s to t and vice versa using two maps, duplicates chars must match the key value pair, ensure one to one mapping for both maps 
+   
+    egg = add, e->a g->d true 
+    egg = ads, e->a g->d g->s false, g can't map to two letters ! 
+    */ 
+
+    std::unordered_map<char, char> iso_map_s; 
+    std::unordered_map<char, char> iso_map_t; 
+
+    for (int i = 0; i < s.size(); i++) {
+        char s_char = s[i]; 
+        char t_char = t[i]; 
+
+        if (iso_map_s.contains(s_char)) { 
+            if (iso_map_s[s_char] != t_char) return false; 
+        } 
+
+        else if (iso_map_t.contains(t_char)) { 
+            if (iso_map_t[t_char] != s_char) return false; 
+        }
+
+        else { 
+            iso_map_s[s_char] = t_char;
+            iso_map_t[t_char] = s_char; 
+        }  
+
+    }
+
+    return true; 
+}; 

@@ -63,6 +63,9 @@ class String {
 
         // O(total divisions + 1), we must convert from base 10 to base 26, handle remainder 0 case, ex. take 104 in base 26 it is [4, 0] = D? here we can't represent 0 with a letter so we subtract one and add 26 to the smaller tier giving [3, 26] = CZ 
         std::string convert_to_title(int column_number); 
+
+        // O(n), map every char in s to t and vice versa using two maps, duplicates chars must match the key value pair, ensure one to one mapping for both maps 
+        bool is_isomorphic(std::string s, std::string t); 
 }; 
 
 /* 
