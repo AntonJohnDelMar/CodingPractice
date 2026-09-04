@@ -488,3 +488,48 @@ void Array::merge(std::vector<int> &nums_1, int m, std::vector<int> &nums_2, int
         nums_1[i] = result[i]; 
     }
 }; 
+
+
+int Array::first_stable_index(std::vector<int> &nums, int k) { 
+    /*
+    Approaches: 
+    - O(n), first idx is the max left and the last idx is the min right, move left and right and track the new max and min as if you started at that index, once we are halfway we can start calculating the stability of the left and right pointers 
+    
+    */
+
+    int max_left_values[nums.size()]; 
+    int min_right_values[nums.size()]; 
+
+    int max_left = 0; 
+    int min_right = 1e9; 
+
+    int first_index = -1; 
+
+    int right = nums.size() - 1; 
+    for (int left = 0; left < nums.size(); left++) {
+        int left_value = nums[left]; 
+        int right_value = nums[right]; 
+
+        max_left = std::max(max_left, left_value); 
+        min_right = std::min(min_right, right_value); 
+
+        max_left_values[left] = max_left; 
+        min_right_values[right] = min_right; 
+
+        if (left >= nums.size() / 2) { 
+            if (max_left_values[right] - min_right_values[right] <= k) {
+                if (first_index == -1) first_index = right; 
+                else first_index = right; 
+            } 
+
+            if (max_left_values[left] - min_right_values[left] <= k) {
+                if (first_index == -1) first_index = left; 
+                else first_index = std::min(first_index, left); 
+            }; 
+        }
+
+        right--; 
+    }
+
+    return first_index; 
+}; 

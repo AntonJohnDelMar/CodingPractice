@@ -13,9 +13,10 @@
 
 
 int main(int argv, char* argc[]) { 
-    auto algorithm = String(); 
+    auto algorithm = Array(); 
+    std::vector<int> nums {3, 2, 1}; 
 
-    auto result = algorithm.is_isomorphic("gadc", "baba"); 
+    auto result = algorithm.first_stable_index(nums, 1); 
 
     return 0; 
 } 

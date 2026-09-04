@@ -61,8 +61,11 @@ class Array {
         // O(n), add one to final element, while there is a carry keep adding it to the elements until there is no carry then return digits, otherwise in the end we have to insert carry into the front of digits 
         std::vector<int> plus_one(std::vector<int> &digits); 
 
-        // 
+        // O(2 * (n + m)), compare element by element, save values into a separate list, write values back into nums_1, 
         void merge(std::vector<int> &nums_1, int m, std::vector<int> &nums_2, int n);  
+
+        // O(n), first idx is the max left and the last idx is the min right, move left and right and track the new max and min as if you started at that index, once we are halfway we can start calculating the stability of the left and right pointers 
+        int first_stable_index(std::vector<int> &nums, int k); 
 }; 
 
 /*
