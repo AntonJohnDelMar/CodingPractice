@@ -23,6 +23,9 @@ class DynamicProgramming {
 
         // O(n * m), save the LCS for each position in text 1, compare the char in text 2, track the current length, if the current length < LCS at that index then make the curr len equal to that LCS, if the two char are the same LCS at that index = curr len + 1, 
         int longest_common_subsequence(std::string text1, std::string text2); 
+
+        // O(n^2), for a given index n in curr_row it's value is prev_row[n - 1] + prev_row[n], the ith row has i + 1 elements, 
+        std::vector<std::vector<int>> pascals_triangle(int num_rows); 
 }; 
 
 /*

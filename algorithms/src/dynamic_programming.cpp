@@ -192,3 +192,31 @@ int DynamicProgramming::longest_common_subsequence(std::string text_1, std::stri
     return max; 
     */
 }; 
+
+
+std::vector<std::vector<int>> DynamicProgramming::pascals_triangle(int num_rows) { 
+    /*
+    Approaches: 
+    - O(n^2), for a given index n in curr_row it's value is prev_row[n - 1] + prev_row[n], the ith row has i + 1 elements, 
+
+    */
+
+    std::vector<std::vector<int>> triangle; 
+
+    // Base case, we have at least one row so add it first 
+    std::vector<int> prev_row {1}; 
+    triangle.push_back(prev_row); 
+
+    for (int ith_row = 1; ith_row < num_rows; ith_row++) { 
+        std::vector<int> curr_row(ith_row + 1, 1); 
+
+        for (int row_idx = 1; row_idx < ith_row; row_idx++) { 
+            curr_row[row_idx] = (prev_row[row_idx - 1] + prev_row[row_idx]); 
+        } 
+
+        triangle.push_back(curr_row); 
+        prev_row = std::move(curr_row); 
+    }
+
+    return triangle; 
+}; 

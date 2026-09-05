@@ -13,10 +13,9 @@
 
 
 int main(int argv, char* argc[]) { 
-    auto algorithm = Array(); 
-    std::vector<int> nums {3, 2, 1}; 
+    auto algorithm = DynamicProgramming(); 
 
-    auto result = algorithm.first_stable_index(nums, 1); 
+    auto result = algorithm.pascals_triangle(6); 
 
     return 0; 
 } 
